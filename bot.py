@@ -69,3 +69,8 @@ def ask_bot(query: Query):
 
     answer = ask_gemini_with_retry(gemini_prompt)
     return {"answer": answer}
+
+if __name__ == "__main__":
+    import os, uvicorn
+    port = int(os.getenv("PORT", 8000))  # Render sets PORT
+    uvicorn.run("bot:app", host="0.0.0.0", port=port)
